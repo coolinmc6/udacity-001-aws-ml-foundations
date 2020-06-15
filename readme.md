@@ -1,7 +1,8 @@
+[Back to All Courses](https://github.com/coolinmc6/CS-concepts)
+
 # AWS Machine Learning Foundations Course
 
 Link: [AWS Machine Learning Foundations Course](https://www.udacity.com/course/aws-machine-learning-foundations--ud090)
-
 
 ## Lesson 2: Software Engineering Practices Part 1
 - "using vectorized operations and more efficient data structures can optimize 

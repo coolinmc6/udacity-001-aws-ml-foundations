@@ -1,6 +1,6 @@
 # AWS Machine Learning Foundations Course
 
-Link:
+Link: [AWS Machine Learning Foundations Course](https://www.udacity.com/course/aws-machine-learning-foundations--ud090)
 
 
 ## Lesson 2: Software Engineering Practices Part 1

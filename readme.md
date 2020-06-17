@@ -202,8 +202,60 @@ gaussian_one = Gaussian(25, 2)
 gaussian_one.mean
 gaussian_one + gaussian_one
 ```
+- good overview of how to contribute to a GitHub project: 
+[https://github.com/MarcDiethelm/contributing/blob/master/README.md](https://github.com/MarcDiethelm/contributing/blob/master/README.md) or
+[https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
+
+**Uploading Package to PyPi**
+
+```sh
+cd binomial_package_files
+python setup.py sdist
+pip install twine
+
+# commands to upload to the pypi test repository
+twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+pip install --index-url https://test.pypi.org/simple/ dsnd-probability
+
+# command to upload to the pypi repository
+twine upload dist/*
+pip install dsnd-probability
+```
+- tutorial on creating packages: [https://packaging.python.org/tutorials/packaging-projects/](https://packaging.python.org/tutorials/packaging-projects/)
 
 ## Lesson 5: Machine Learning with AWS DeepComposer
+
+### ML Techniques and Generative AI
+
+- Types of ML Techniques
+  - Supervised Learning
+    - every training example has a corresponding label
+  - Unsupervised Learning
+    - No labels for training data
+    - Most Generative AI is unsupervised learning
+  - Reinforcement Learning
+    - learns through consequences of action in specific environment
+- Generative AI is one of the most promising new technologies
+- Generative AI pits two different neural networks against each other to produce
+new and original digital works based on sample inputs
+
+**their notes:**
+Machine Learning Techniques
+
+**Supervised Learning:** Models are presented wit input data and the desired results. The model will then attempt to learn rules that map the input data to the desired results.
+
+**Unsupervised Learning:** Models are presented with datasets that have no labels or predefined patterns, and the model will attempt to infer the underlying structures from the dataset. Generative AI is a type of unsupervised learning.
+
+**Reinforcement learning:** The model or agent will interact with a dynamic world to achieve a certain goal. The dynamic world will reward or punish the agent based on its actions. Overtime, the agent will learn to navigate the dynamic world and accomplish its goal(s) based on the rewards and punishments that it has received.
+
+### AWS DeepComposer
+
+- AWS DeepComposer is how Amazon is teaching developers how to use GAN (Generative
+Adversarial Networks) to generate music
+- GANs pit 2 networks, a generator and a discriminator, against each other to generate new content.
+  - generator: creates new output
+  - discriminator: evaluates the quality of output AND provides feedback
+
 
 ## Lesson 6: Dive Deeper into Machine Learning
 

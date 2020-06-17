@@ -76,6 +76,133 @@ and each test function must start with "test" as in `def test_nearest_square_5()
 
 ## Lesson 4: Introduction to Object-Oriented Programming
 
+[Code for the lesson](https://github.com/udacity/DSND_Term2/tree/master/lessons/ObjectOrientedProgramming)
+
+- Objects have characteristics and can perform actions
+- An object is a specific instance of something whereas a class is the generic
+version of the object, or blueprint of it
+- Here are some terms worth knowing:
+  - class - a blueprint consisting of methods and attributes
+  - object - an instance of a class. It can help to think of objects as something 
+  in the real world like a yellow pencil, a small dog, a blue shirt, etc. However, 
+  as you'll see later in the lesson, objects can be more abstract.
+  - attribute - a descriptor or characteristic. Examples would be color, length, 
+  size, etc. These attributes can take on specific values like blue, 3 inches, 
+  large, etc.
+  - method - an action that a class or object could take
+  - OOP - a commonly used abbreviation for object-oriented programming
+  - encapsulation - one of the fundamental ideas behind object-oriented programming 
+  is called encapsulation: you can combine functions and data all into a single 
+  entity. In object-oriented programming, this single entity is called a class. 
+  Encapsulation allows you to hide implementation details much like how the 
+  scikit-learn package hides the implementation of machine learning algorithms.
+- **method** vs **function**:
+  - a *method* is a function inside a class while a *function* is outside of a
+  class
+- when writing class methods, notice how you don't have to pass *self* in as an
+argument; it is passed implicitly
+- If you saved your Shirt class in a file called `shirt.py`, you would import
+it by doing the following:
+
+```py
+from shirt import Shirt
+```
+- this assumes that your class is named "Shirt" (with a capital "S")
+- There are a number of drawbacks of accessing object properties directly vs.
+using getter and setter methods. Python is looser than other OO languages
+
+### Gaussian Package
+
+- Gaussian (normal distribution) calculator: http://onlinestatbook.com/2/calculators/normal_dist.html
+- Binomial Distribution calculator: http://onlinestatbook.com/2/calculators/binomial_dist.html
+
+- The exercise on magic methods was interesting. Notice in the `magic_methods.py`
+file there is an `__add__` method. I'm overwriting Python's normal add method
+so that when I do the following I don't get an error:
+
+```py
+gaussian_one = Gaussian(25, 3)
+gaussian_two = Gaussian(30, 4)
+gaussian_sum = gaussian_one + gaussian_two # __add__ magic method
+```
+
+**Inheritance**
+
+- Inheritance is pretty self-explanatory in Python. Here is an example of the
+Shirt class that inherits from Clothing:
+
+```py
+class Clothing:
+
+    def __init__(self, color, size, style, price):
+        self.color = color
+        self.size = size
+        self.style = style
+        self.price = price
+        
+    def change_price(self, price):
+        self.price = price
+        
+    def calculate_discount(self, discount):
+        return self.price * (1 - discount)
+    
+    def calculate_shipping(self, weight, rate):
+        return weight * rate
+        
+class Shirt(Clothing):
+    
+    def __init__(self, color, size, style, price, long_or_short):
+        
+        Clothing.__init__(self, color, size, style, price)
+        self.long_or_short = long_or_short
+    
+    def double_price(self):
+        self.price = 2*self.price
+```
+- `Clothing` is pretty normal, nothing exciting there
+- `Shirt` first has `(Clothing)` on the class defintion line
+- Notice the `__init__` method; it's a normal `__init__` method except you first
+call the Clothing class and then set any properties for your Shirt class
+
+**Advanced OOP Topics**
+
+Here are some Python-focused OOP articles and concepts:
+- [class methods, instance methods, and static methods](https://realpython.com/instance-class-and-static-methods-demystified/):
+these are different types of methods that can be accessed at the class or object level
+- [class attributes vs instance attributes](https://www.python-course.eu/python3_class_and_instance_attributes.php):
+you can also define attributes at the class level or at the instance level
+- [multiple inheritance, mixins](https://easyaspython.com/mixins-for-fun-and-profit-cb9962760556): 
+A class can inherit from multiple parent classes
+- [Python decorators](https://realpython.com/primer-on-python-decorators/): 
+Decorators are a short-hand way for using functions inside other functions
+
+**Making a package**
+
+- I won't go through everything here are the basics. You can see what's really 
+happening in the folder in this repo: *3a_python_package*
+
+
+- my_python_package (**package_root**)
+  - `setup.py` (sets up package)
+  - distributions (**code for my package**)
+    - `__init__`: the init code for my package
+    - `Generaldistribution.py`: the parent class for my Gaussian distribution class
+    - `Gaussiandistribution.py`: Gaussian distribution class
+- To use it, I could go to that folder and do
+
+```sh
+pip install .
+```
+- this will install it. And then do `python` in the Terminal to bring up the
+interpreter:
+
+```py
+from distributions import Gaussian
+gaussian_one = Gaussian(25, 2)
+gaussian_one.mean
+gaussian_one + gaussian_one
+```
+
 ## Lesson 5: Machine Learning with AWS DeepComposer
 
 ## Lesson 6: Dive Deeper into Machine Learning
